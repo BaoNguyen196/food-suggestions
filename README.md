@@ -1,6 +1,6 @@
-# Food Suggestions App with Vue and Quasar Cross-Platform
+# Food Suggestions App
 
-A Food Suggestions App
+A Food Suggestions App using Vue and Quasar Cross-Platform VueJs framework
 
 ## Install the dependencies
 
