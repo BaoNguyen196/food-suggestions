@@ -1,8 +1,8 @@
 {
-  "name": "quasar-dev",
+  "name": "food-suggestions",
   "version": "0.0.1",
-  "description": "A Quasar Project",
-  "productName": "Quasar App",
+  "description": "A Food Suggestions App",
+  "productName": "Food Suggestions App",
   "author": "Bao Nguyen",
   "private": true,
   "scripts": {
