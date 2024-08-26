@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 defineOptions({
-  name: 'EssentialLink'
+  name: 'EssentialLink',
 });
 
 export interface EssentialLinkProps {
@@ -26,6 +26,6 @@ export interface EssentialLinkProps {
 withDefaults(defineProps<EssentialLinkProps>(), {
   caption: '',
   link: '#',
-  icon: ''
+  icon: '',
 });
 </script>

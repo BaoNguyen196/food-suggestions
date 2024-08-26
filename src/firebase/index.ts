@@ -10,7 +10,7 @@ const firebaseConfig = {
   projectId: 'food-suggestions-3758a',
   storageBucket: 'food-suggestions-3758a.appspot.com',
   messagingSenderId: '446399715949',
-  appId: '1:446399715949:web:cadb45c1408a2561743d64'
+  appId: '1:446399715949:web:cadb45c1408a2561743d64',
 };
 
 // Initialize Firebase
