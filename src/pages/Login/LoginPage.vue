@@ -40,7 +40,6 @@ import { useRouter } from 'vue-router';
 export default defineComponent({
   mounted() {
     const authStore = useAuthStore();
-    console.log('authStore: ', authStore.isLoggedIn);
     if (authStore.isLoggedIn) {
       this.$router.push('/admin');
     }
