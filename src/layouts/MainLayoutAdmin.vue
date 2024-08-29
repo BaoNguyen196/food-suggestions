@@ -1,3 +1,22 @@
+<script>
+import { defineComponent, ref } from 'vue';
+import { useAuthStore } from '#/stores/auth-store';
+export default defineComponent({
+  name: 'MainLayoutAdmin',
+  setup() {
+    const store = useAuthStore();
+    const leftDrawerOpen = ref(false);
+    return {
+      isLoggedIn: store.isLoggedIn,
+      leftDrawerOpen,
+      toggleLeftDrawer() {
+        leftDrawerOpen.value = !leftDrawerOpen.value;
+      },
+    };
+  },
+});
+</script>
+
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
@@ -49,21 +68,3 @@
     </q-page-container>
   </q-layout>
 </template>
-
-<script>
-import { defineComponent, ref } from 'vue';
-
-export default defineComponent({
-  name: 'MainLayoutDashboard',
-
-  setup() {
-    const leftDrawerOpen = ref(false);
-    return {
-      leftDrawerOpen,
-      toggleLeftDrawer() {
-        leftDrawerOpen.value = !leftDrawerOpen.value;
-      },
-    };
-  },
-});
-</script>

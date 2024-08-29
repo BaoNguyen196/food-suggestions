@@ -1,22 +1,34 @@
 import { RouteRecordRaw } from 'vue-router';
 
+import MainLayout from '#/layouts/MainLayout.vue';
+import MainLayoutAdmin from '#/layouts/MainLayoutAdmin.vue';
+import AdminPage from '#/pages/Admin/AdminPage.vue';
+import LoginPage from '#/pages/Login/LoginPage.vue';
+
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    component: () => import('layouts/MainLayout.vue'),
-    // children: [
-    //   // { path: '', component: () => import('pages/IndexPage.vue') },
-    //   {
-    //     path: 'admin',
-    //     component: () => import('pages/Admin/AdminPage.vue')
-    //   }
-    // ]
+    component: MainLayout,
+    children: [
+      {
+        path: '/admin',
+        component: MainLayoutAdmin,
+        children: [
+          {
+            path: '',
+            component: AdminPage,
+          },
+        ],
+        meta: { requiresAuth: true },
+      },
+      {
+        name: 'login',
+        path: '/login',
+        component: LoginPage,
+      },
+    ],
   },
-  {
-    path: '/admin',
-    component: () => import('layouts/MainLayoutDashboard.vue'),
-    children: [{ path: '', component: () => import('pages/Admin/AdminPage.vue') }],
-  },
+
   // Always leave this as last one,
   // but you can also remove it
   {

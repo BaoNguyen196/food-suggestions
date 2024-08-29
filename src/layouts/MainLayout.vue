@@ -1,9 +1,7 @@
 <template>
-  <div class="q-pa-md">testing</div>
+  <router-view />
 </template>
 
 <script setup lang="ts">
-defineOptions({
-  name: 'MainLayout',
-});
+// import firestore from '#/firebase'
 </script>
