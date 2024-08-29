@@ -22,8 +22,7 @@ export const useAuthStore = defineStore('auth', {
     logout() {
       this.isLoggedIn = false;
       this.user = null;
-      AuthUtils.clearUser();
-      AuthUtils.clearUser();
+      AuthUtils.clearAllStorage();
     },
   },
 });

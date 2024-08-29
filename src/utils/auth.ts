@@ -3,6 +3,7 @@ export const USER_INFO_KEY = 'auth:user-info' as const;
 
 export function clearAllStorage(): void {
   clearAccessToken();
+  clearUser();
 }
 
 ////////////////////////////////////

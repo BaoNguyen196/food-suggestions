@@ -1,17 +1,33 @@
 <script>
 import { defineComponent, ref } from 'vue';
 import { useAuthStore } from '#/stores/auth-store';
+import { useQuasar } from 'quasar';
+import { useRouter } from 'vue-router';
 export default defineComponent({
   name: 'MainLayoutAdmin',
   setup() {
+    const router = useRouter();
+
+    const $q = useQuasar();
     const store = useAuthStore();
     const leftDrawerOpen = ref(false);
+    function onLogout() {
+      $q.dialog({
+        title: 'Are you sure to logout?',
+        message: 'All unfinished tasks will be deleted/cancelled as soon as you log out!',
+        cancel: true,
+      }).onOk(() => {
+        store.logout();
+        router.replace('/');
+      });
+    }
     return {
       isLoggedIn: store.isLoggedIn,
       leftDrawerOpen,
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value;
       },
+      onLogout,
     };
   },
 });
@@ -25,25 +41,23 @@ export default defineComponent({
         <q-toolbar-title>Food Suggestions App</q-toolbar-title>
         <q-space />
         <div class="q-gutter-sm row items-center no-wrap">
-          <q-btn round dense flat color="white" icon="notifications">
-            <q-badge color="red" text-color="white" floating> 5 </q-badge>
-            <q-menu>
-              <q-list style="min-width: 100px">
-                <q-card class="text-center no-shadow no-border">
-                  <q-btn
-                    label="View All"
-                    style="max-width: 120px !important"
-                    flat
-                    dense
-                    class="text-indigo-8"
-                  ></q-btn>
-                </q-card>
-              </q-list>
-            </q-menu>
-          </q-btn>
           <q-btn round flat>
             <q-avatar size="26px">
               <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
+              <q-menu>
+                <q-list style="min-width: 100px">
+                  <q-card class="text-center no-shadow no-border">
+                    <q-btn
+                      label="Logout"
+                      style="max-width: 120px !important"
+                      flat
+                      dense
+                      class="text-indigo-8"
+                      @click="onLogout"
+                    ></q-btn>
+                  </q-card>
+                </q-list>
+              </q-menu>
             </q-avatar>
           </q-btn>
         </div>

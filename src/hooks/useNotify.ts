@@ -8,6 +8,7 @@ export const useNotify = () => {
     $q.notify({
       position: 'top-right',
       type,
+      closeBtn: true,
       ...props,
     });
   };
