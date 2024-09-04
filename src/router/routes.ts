@@ -4,6 +4,7 @@ import MainLayout from '#/layouts/MainLayout.vue';
 import MainLayoutAdmin from '#/layouts/MainLayoutAdmin.vue';
 import AdminPage from '#/pages/Admin/AdminPage.vue';
 import LoginPage from '#/pages/Login/LoginPage.vue';
+import MetadataPage from '#/pages/Metadata/MetadataPage.vue';
 
 const routes: RouteRecordRaw[] = [
   {
@@ -17,6 +18,17 @@ const routes: RouteRecordRaw[] = [
           {
             path: '',
             component: AdminPage,
+          },
+        ],
+        meta: { requiresAuth: true },
+      },
+      {
+        path: '/metadata',
+        component: MainLayoutAdmin,
+        children: [
+          {
+            path: '',
+            component: MetadataPage,
           },
         ],
         meta: { requiresAuth: true },
