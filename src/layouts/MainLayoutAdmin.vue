@@ -21,6 +21,22 @@ export default defineComponent({
         router.replace('/');
       });
     }
+
+    const navigationList = [
+      {
+        name: 'dashboard',
+        label: 'Dashboard',
+        icon: 'dashboard',
+        to: '/admin',
+      },
+      {
+        name: 'metadata',
+        label: 'Metadata',
+        icon: 'metadata',
+        to: 'metadata',
+      },
+    ];
+
     return {
       isLoggedIn: store.isLoggedIn,
       leftDrawerOpen,
@@ -28,6 +44,7 @@ export default defineComponent({
         leftDrawerOpen.value = !leftDrawerOpen.value;
       },
       onLogout,
+      navigationList,
     };
   },
 });
@@ -66,19 +83,26 @@ export default defineComponent({
 
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered class="bg-primary text-white">
       <q-list>
-        <q-item to="/admin" active-class="q-item-no-link-highlighting">
+        <q-item
+          v-for="item in navigationList"
+          :to="item.to"
+          :key="item.key"
+          active-class="q-item-no-link-highlighting"
+        >
           <q-item-section avatar>
-            <q-icon name="dashboard" />
+            <q-icon :name="item.icon" />
           </q-item-section>
           <q-item-section>
-            <q-item-label>Dashboard</q-item-label>
+            <q-item-label>{{ item.label }}</q-item-label>
           </q-item-section>
         </q-item>
       </q-list>
     </q-drawer>
 
-    <q-page-container class="bg-grey-2">
-      <router-view />
+    <q-page-container class="bg-grey-2" style="height: 100vh">
+      <q-page padding>
+        <router-view />
+      </q-page>
     </q-page-container>
   </q-layout>
 </template>
